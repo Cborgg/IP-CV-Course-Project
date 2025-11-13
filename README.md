@@ -8,7 +8,7 @@
 
 ## Features
 
-- Single-file PINN implementation (the script you provided).
+- Single-file PINN implementation.
 - Residual-based Adaptive Refinement (RAR): candidate pool → evaluate residuals → replace worst collocation points by top residual candidates each cycle.
 - L-BFGS inner solver per RAR cycle + optional final global L-BFGS pass.
 - Trial solution enforces Dirichlet boundary conditions exactly.
@@ -32,7 +32,7 @@ venv\Scripts\activate        # Windows
 pip install torch numpy matplotlib
 ```
 
-3. Save the file (e.g. `helmholtz_pinn_rar.py`) — the code you provided already runs as a script.
+3. Save the file (e.g. `helmholtz_pinn_rar.py`)
 
 4. Run the example:
 
@@ -46,7 +46,7 @@ You should see printed progress for each RAR cycle and two matplotlib figures:
 
 ---
 
-## Important implementation notes (what the code does & why)
+## Important implementation notes
 
 - **Domain mapping**: inputs `xh` are normalized to `[-1, 1]`. The physical coordinate `x_phys` is computed as `x_phys = (xh + 1) * (L/2)`. Because of this mapping, second derivative w.r.t. normalized `xh` is scaled by `(2/L)^2` — the code multiplies `d2p` by `(2.0 / L)**2` in the residual to recover the physical second derivative.
 
@@ -105,7 +105,7 @@ You should see printed progress for each RAR cycle and two matplotlib figures:
 
 ---
 
-## Files (suggested repo layout)
+## Files 
 
 ```
 README.md                    # this file
@@ -126,9 +126,8 @@ matplotlib
 
 ---
 
-## Suggested citations (BibTeX)
+## Citations
 
-Include these in any manuscripts that use this code. Fill your details/version/DOI if you publish the repo (e.g., Zenodo).
 
 **Repository citation (example):**
 
@@ -143,7 +142,7 @@ Include these in any manuscripts that use this code. Fill your details/version/D
 }
 ```
 
-**Foundational PINN paper (recommended):**
+**Foundational PINN paper :**
 
 ```bibtex
 @article{raissi2019physicsinformed,
@@ -157,7 +156,7 @@ Include these in any manuscripts that use this code. Fill your details/version/D
 }
 ```
 
-**Gradient-enhanced PINNs (example):**
+**Gradient-enhanced PINNs :**
 
 ```bibtex
 @article{yu2022gradient,
@@ -171,7 +170,7 @@ Include these in any manuscripts that use this code. Fill your details/version/D
 }
 ```
 
-**Sampling / RAR study (example):**
+**Sampling / RAR study :**
 
 ```bibtex
 @article{wu2023comprehensive,
@@ -187,20 +186,5 @@ Include these in any manuscripts that use this code. Fill your details/version/D
 
 ---
 
-## License
 
-I recommend an OSI-approved license (MIT preferred for permissive reuse). Example `LICENSE` contents (MIT).
-
----
-
-## Next steps (optional)
-
-If you want, I can also generate:
-- a `requirements.txt` and `pyproject.toml` / `setup.py`,
-- a GPU-ready toggle for `device` (auto-detect CUDA),
-- an `argparse` CLI to change `k`, `N_colloc`, `N_cycles`, etc. from the command line,
-- automatic model checkpoint saving and figure exports,
-- a `CITATION.cff` or Zenodo-ready metadata for releasing a DOI.
-
-Tell me which of the above you want and I will add them to the repo as files.
 
